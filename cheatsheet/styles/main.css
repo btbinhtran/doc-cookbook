@@ -63,12 +63,7 @@ header {
 
 section
 {
-	display: block;
-	
-	background-color: #fff;
-	padding: 12px 24px;
-    border-bottom: 1px solid #ccc;
-    margin-right: 240px;
+  margin-top: 20px;
 }
 
 .variation {
@@ -264,16 +259,16 @@ h1, h2, h3 {
   /*border: 1px solid #7F8C8D;*/
 }
 
-article.category h5 {
+section.category h5 {
   border-bottom: 1px solid #ECF0F1;
   padding: 0 0 5px 5px;
 }
 
-article.category ul {
+section.category ul {
   list-style: none;
 }
 
-article.category li a {
+section.category li a {
   display: inline-block;
   width: 100%;
 }
