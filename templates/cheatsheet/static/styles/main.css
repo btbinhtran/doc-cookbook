@@ -1,42 +1,59 @@
-html
-{
-    overflow: auto;
-    background-color: #fff;
+@font-face {
+  font-family: 'latoregular';
+  src: url('../../fonts/lato-reg-webfont.eot');
+  src: url('../fonts/lato-reg-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/lato-reg-webfont.woff') format('woff'),
+  url('../fonts/lato-reg-webfont.ttf') format('truetype'),
+  url('../fonts/lato-reg-webfont.svg#latoregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-body
-{
-	font: 14px "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
-	line-height: 130%;
-	color: #000;
-	background-color: #fff;
+html {
+    overflow: auto;
+    background-color: #2C3E50;
 }
+
+body {
+
+  line-height: 130%;
+  color: #ECF0F1;
+  background-color: #2C3E50;
+  font-size: 16px;
+  font-family: "latoregular","DejaVu Sans Condensed", "Liberation Sans", Arial;
+}
+
+ul, ol {
+  margin: 0;
+}
+
 
 a {
-    color: #444;
+  color: #ECF0F1;
+  text-decoration: none;
 }
 
 a:visited {
-    color: #444;
+  color: #BDC3C7;
 }
 
-a:active {
-    color: #444;
+a:hover {
+  text-decoration: underline;
+  background-color: #2980B9;
 }
 
-header
-{
-	display: block;
-	padding: 6px 4px;
+header {
+  display: block;
+  padding: 6px 4px;
 }
 
 .class-description {
-    font-style: italic;
-	font-family: Palatino, 'Palatino Linotype', serif;
-	font-size: 130%;
-	line-height: 140%;
-	margin-bottom: 1em;
-	margin-top: 1em;
+  font-style: italic;
+  font-family: Palatino, 'Palatino Linotype', serif;
+  font-size: 130%;
+  line-height: 140%;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 #main {
@@ -46,12 +63,7 @@ header
 
 section
 {
-	display: block;
-	
-	background-color: #fff;
-	padding: 12px 24px;
-    border-bottom: 1px solid #ccc;
-    margin-right: 240px;
+  margin-top: 20px;
 }
 
 .variation {
@@ -59,115 +71,76 @@ section
 }
 
 .optional:after {
-	content: "opt";
-	font-size: 60%;
-	color: #aaa;
-	font-style: italic;
-	font-weight: lighter;
+  content: "opt";
+  font-size: 60%;
+  color: #aaa;
+  font-style: italic;
+  font-weight: lighter;
 }
 
-nav
-{
-	display: block;
-	float: left;
-    margin-left: -230px;
-    margin-top: 28px;
-    width: 220px;
-    border-left: 1px solid #ccc;
-    padding-left: 9px;
-}
-
-nav ul {
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
-    font-size: 100%;
-    line-height: 17px;
-    padding:0;
-    margin:0;
-    list-style-type:none;
-}
-
-nav h2 a, nav h2 a:visited {
-    color: #A35A00;
-    text-decoration: none;
-}
-
-nav h3 {
-    margin-top: 12px;
-}
-
-nav li {
-    margin-top: 6px;
-}
-
-nav a {
-    color: #5C5954;
-}
-
-nav a:visited {
-    color: #5C5954;
-}
-
-nav a:active {
-    color: #5C5954;
-}
 
 footer {
     display: block;
-    padding: 6px;
-    margin-top: 12px;
+    float: left;
+    padding: 20px;
+    margin-top: 20px;
     font-style: italic;
     font-size: 90%;
+
 }
 
 h1
 {
-	font-size: 200%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 6px 0 9px 0;
+  font-size: 200%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 6px 0 9px 0;
 }
 
 h2
 {
-	font-size: 170%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 6px 0 3px 0;
+  font-size: 170%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
 }
 
 h3
 {
-	font-size: 150%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin-top: 16px;
-	margin: 6px 0 3px 0;
+  font-size: 150%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
+  margin-top: 16px;
 }
 
 h4
 {
-	font-size: 130%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin-top: 16px;
-	margin: 18px 0 3px 0;
-	color: #A35A00;
+  font-size: 130%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 18px 0 3px 0;
+  margin-top: 16px;
 }
 
 h5, .container-overview .subsection-title
 {
-	font-size: 120%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 8px 0 3px -16px;
+  font-size: 120%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 8px 0 3px -16px;
 }
 
 h6
 {
-	font-size: 100%;
-	letter-spacing: -0.01em;
-	margin: 6px 0 3px 0;
-	font-style: italic;
+  font-size: 100%;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
+  font-style: italic;
+}
+
+h1, h2, h3 {
+  line-height: 30px;
 }
 
 .ancestors { color: #999; }
@@ -179,8 +152,8 @@ h6
 
 .important
 {
-	font-weight: bold;
-	color: #950B02;
+  font-weight: bold;
+  color: #950B02;
 }
 
 .yes-def {
@@ -192,7 +165,7 @@ h6
 }
 
 .name, .signature {
-	font-family: Consolas, "Lucida Console", Monaco, monospace;
+  font-family: Consolas, "Lucida Console", Monaco, monospace;
 }
 
 .details { margin-top: 14px; }
@@ -203,23 +176,23 @@ h6
 .details li { margin-left: 30px; padding-top: 6px; }
 
 .description {
-	margin-bottom: 1em;
-	margin-left: -16px;
-	margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: -16px;
+  margin-top: 1em;
 }
 
 .code-caption
 {
-	font-style: italic;
-	font-family: Palatino, 'Palatino Linotype', serif;
-	font-size: 107%;
-	margin: 0;
+  font-style: italic;
+  font-family: Palatino, 'Palatino Linotype', serif;
+  font-size: 107%;
+  margin: 0;
 }
 
 .prettyprint
 {
-	border: 1px solid #ddd;
-	width: 80%;
+  border: 1px solid #ddd;
+  width: 80%;
     overflow: auto;
 }
 
@@ -229,50 +202,50 @@ h6
 
 .prettyprint code
 {
-	font-family: Consolas, 'Lucida Console', Monaco, monospace;
-	font-size: 100%;
-	line-height: 18px;
-	display: block;
-	padding: 4px 12px;
-	margin: 0;
-	background-color: #fff;
-	color: #000;
-	border-left: 3px #ddd solid;
+  font-family: Consolas, 'Lucida Console', Monaco, monospace;
+  font-size: 100%;
+  line-height: 18px;
+  display: block;
+  padding: 4px 12px;
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  border-left: 3px #ddd solid;
 }
 
 .params, .props
 {
-	border-spacing: 0;
-	border: 0;
-	border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  border-collapse: collapse;
 }
 
 .params .name, .props .name, .name code {
-	color: #A35A00;
-	font-family: Consolas, 'Lucida Console', Monaco, monospace;
-	font-size: 100%;
+  color: #A35A00;
+  font-family: Consolas, 'Lucida Console', Monaco, monospace;
+  font-size: 100%;
 }
 
 .params td, .params th, .props td, .props th
 {
-	border: 1px solid #ddd;
-	margin: 0px;
-	text-align: left;
-	vertical-align: top;
-	padding: 4px 6px;
-	display: table-cell;
+  border: 1px solid #ddd;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  padding: 4px 6px;
+  display: table-cell;
 }
 
 .params thead tr, .props thead tr
 {
-	background-color: #ddd;
-	font-weight: bold;
+  background-color: #ddd;
+  font-weight: bold;
 }
 
 .params .params thead tr, .props .props thead tr
 {
-	background-color: #fff;
-	font-weight: bold;
+  background-color: #fff;
+  font-weight: bold;
 }
 
 .params th, .props th { border-right: 1px solid #aaa; }
@@ -282,10 +255,49 @@ h6
     color: #454545;
 }
 
-.modeling {
-  background-color: red;
+.categories .span2 {
+  /*border: 1px solid #7F8C8D;*/
 }
 
-.directives {
-  background-color: blue;
+section.category h5 {
+  border-bottom: 1px solid #ECF0F1;
+  padding: 0 0 5px 5px;
+}
+
+section.category ul {
+  list-style: none;
+}
+
+section.category li a {
+  display: inline-block;
+  width: 100%;
+}
+
+.categories {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.navbar-inner {
+  background-image: none;
+  background-color: transparent;
+  border-radius: 0 0 0 0;
+  box-shadow: none;
+  border: none;
+}
+
+
+.navbar .brand, .navbar .nav > li > a {
+  color: #ECF0F1;
+  text-shadow: none;
+}
+
+.navbar .nav > li > a:hover {
+  color: #ECF0F1;
+}
+
+@media (max-width: 1190px){
+  section.category h5 {
+    font-size: 90%;
+  }
 }

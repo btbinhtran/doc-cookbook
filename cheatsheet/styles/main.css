@@ -16,8 +16,8 @@ html {
 
 body {
 
-	line-height: 130%;
-	color: #ECF0F1;
+  line-height: 130%;
+  color: #ECF0F1;
   background-color: #2C3E50;
   font-size: 16px;
   font-family: "latoregular","DejaVu Sans Condensed", "Liberation Sans", Arial;
@@ -43,17 +43,17 @@ a:hover {
 }
 
 header {
-	display: block;
-	padding: 6px 4px;
+  display: block;
+  padding: 6px 4px;
 }
 
 .class-description {
   font-style: italic;
-	font-family: Palatino, 'Palatino Linotype', serif;
-	font-size: 130%;
-	line-height: 140%;
-	margin-bottom: 1em;
-	margin-top: 1em;
+  font-family: Palatino, 'Palatino Linotype', serif;
+  font-size: 130%;
+  line-height: 140%;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 #main {
@@ -71,11 +71,11 @@ section
 }
 
 .optional:after {
-	content: "opt";
-	font-size: 60%;
-	color: #aaa;
-	font-style: italic;
-	font-weight: lighter;
+  content: "opt";
+  font-size: 60%;
+  color: #aaa;
+  font-style: italic;
+  font-weight: lighter;
 }
 
 
@@ -91,52 +91,52 @@ footer {
 
 h1
 {
-	font-size: 200%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 6px 0 9px 0;
+  font-size: 200%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 6px 0 9px 0;
 }
 
 h2
 {
-	font-size: 170%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 6px 0 3px 0;
+  font-size: 170%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
 }
 
 h3
 {
-	font-size: 150%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 6px 0 3px 0;
+  font-size: 150%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
   margin-top: 16px;
 }
 
 h4
 {
-	font-size: 130%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 18px 0 3px 0;
+  font-size: 130%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 18px 0 3px 0;
   margin-top: 16px;
 }
 
 h5, .container-overview .subsection-title
 {
-	font-size: 120%;
-	font-weight: bold;
-	letter-spacing: -0.01em;
-	margin: 8px 0 3px -16px;
+  font-size: 120%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 8px 0 3px -16px;
 }
 
 h6
 {
-	font-size: 100%;
-	letter-spacing: -0.01em;
-	margin: 6px 0 3px 0;
-	font-style: italic;
+  font-size: 100%;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
+  font-style: italic;
 }
 
 h1, h2, h3 {
@@ -152,8 +152,8 @@ h1, h2, h3 {
 
 .important
 {
-	font-weight: bold;
-	color: #950B02;
+  font-weight: bold;
+  color: #950B02;
 }
 
 .yes-def {
@@ -165,7 +165,7 @@ h1, h2, h3 {
 }
 
 .name, .signature {
-	font-family: Consolas, "Lucida Console", Monaco, monospace;
+  font-family: Consolas, "Lucida Console", Monaco, monospace;
 }
 
 .details { margin-top: 14px; }
@@ -176,23 +176,23 @@ h1, h2, h3 {
 .details li { margin-left: 30px; padding-top: 6px; }
 
 .description {
-	margin-bottom: 1em;
-	margin-left: -16px;
-	margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: -16px;
+  margin-top: 1em;
 }
 
 .code-caption
 {
-	font-style: italic;
-	font-family: Palatino, 'Palatino Linotype', serif;
-	font-size: 107%;
-	margin: 0;
+  font-style: italic;
+  font-family: Palatino, 'Palatino Linotype', serif;
+  font-size: 107%;
+  margin: 0;
 }
 
 .prettyprint
 {
-	border: 1px solid #ddd;
-	width: 80%;
+  border: 1px solid #ddd;
+  width: 80%;
     overflow: auto;
 }
 
@@ -202,50 +202,50 @@ h1, h2, h3 {
 
 .prettyprint code
 {
-	font-family: Consolas, 'Lucida Console', Monaco, monospace;
-	font-size: 100%;
-	line-height: 18px;
-	display: block;
-	padding: 4px 12px;
-	margin: 0;
-	background-color: #fff;
-	color: #000;
-	border-left: 3px #ddd solid;
+  font-family: Consolas, 'Lucida Console', Monaco, monospace;
+  font-size: 100%;
+  line-height: 18px;
+  display: block;
+  padding: 4px 12px;
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  border-left: 3px #ddd solid;
 }
 
 .params, .props
 {
-	border-spacing: 0;
-	border: 0;
-	border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  border-collapse: collapse;
 }
 
 .params .name, .props .name, .name code {
-	color: #A35A00;
-	font-family: Consolas, 'Lucida Console', Monaco, monospace;
-	font-size: 100%;
+  color: #A35A00;
+  font-family: Consolas, 'Lucida Console', Monaco, monospace;
+  font-size: 100%;
 }
 
 .params td, .params th, .props td, .props th
 {
-	border: 1px solid #ddd;
-	margin: 0px;
-	text-align: left;
-	vertical-align: top;
-	padding: 4px 6px;
-	display: table-cell;
+  border: 1px solid #ddd;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  padding: 4px 6px;
+  display: table-cell;
 }
 
 .params thead tr, .props thead tr
 {
-	background-color: #ddd;
-	font-weight: bold;
+  background-color: #ddd;
+  font-weight: bold;
 }
 
 .params .params thead tr, .props .props thead tr
 {
-	background-color: #fff;
-	font-weight: bold;
+  background-color: #fff;
+  font-weight: bold;
 }
 
 .params th, .props th { border-right: 1px solid #aaa; }
