@@ -1,12 +1,15 @@
+
+
 html {
     overflow: auto;
     background-color: #2C3E50;
 }
 
 body {
-	font: 14px "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+
 	line-height: 130%;
 	color: #ECF0F1;
+  background-color: #2C3E50;
 }
 
 a {
@@ -94,8 +97,8 @@ h3
 	font-size: 150%;
 	font-weight: bold;
 	letter-spacing: -0.01em;
-	margin-top: 16px;
 	margin: 6px 0 3px 0;
+  margin-top: 16px;
 }
 
 h4
@@ -103,8 +106,8 @@ h4
 	font-size: 130%;
 	font-weight: bold;
 	letter-spacing: -0.01em;
-	margin-top: 16px;
 	margin: 18px 0 3px 0;
+  margin-top: 16px;
 	color: #A35A00;
 }
 
@@ -122,6 +125,10 @@ h6
 	letter-spacing: -0.01em;
 	margin: 6px 0 3px 0;
 	font-style: italic;
+}
+
+h1, h2, h3 {
+  line-height: 30px;
 }
 
 .ancestors { color: #999; }
@@ -250,7 +257,7 @@ h6
 
 article.category h3 {
   border-bottom: 1px solid #ECF0F1;
-  padding: 0 0 10px 5px;
+  padding: 0 0 5px 5px;
 }
 
 article.category ul {
@@ -265,4 +272,22 @@ article.category li a {
 .categories {
   width: 90%;
   margin: 0 auto;
+}
+
+.navbar-inner {
+  background-image: none;
+  background-color: transparent;
+  border-radius: 0px 0px 0px 0px;
+  box-shadow: none;
+  border: none;
+}
+
+
+.navbar .brand, .navbar .nav > li > a {
+  color: #ECF0F1;
+  text-shadow: none;
+}
+
+.navbar .nav > li > a:hover {
+  color: #ECF0F1;
 }
