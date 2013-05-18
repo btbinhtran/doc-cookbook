@@ -1,4 +1,13 @@
-
+@font-face {
+  font-family: 'latoregular';
+  src: url('../../fonts/lato-reg-webfont.eot');
+  src: url('../fonts/lato-reg-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/lato-reg-webfont.woff') format('woff'),
+  url('../fonts/lato-reg-webfont.ttf') format('truetype'),
+  url('../fonts/lato-reg-webfont.svg#latoregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
     overflow: auto;
@@ -10,7 +19,14 @@ body {
 	line-height: 130%;
 	color: #ECF0F1;
   background-color: #2C3E50;
+  font-size: 16px;
+  font-family: "latoregular","DejaVu Sans Condensed", "Liberation Sans", Arial;
 }
+
+ul, ol {
+  margin: 0;
+}
+
 
 a {
   color: #ECF0F1;
@@ -70,10 +86,12 @@ section
 
 footer {
     display: block;
-    padding: 6px;
-    margin-top: 12px;
+    float: left;
+    padding: 20px;
+    margin-top: 20px;
     font-style: italic;
     font-size: 90%;
+
 }
 
 h1
@@ -108,7 +126,6 @@ h4
 	letter-spacing: -0.01em;
 	margin: 18px 0 3px 0;
   margin-top: 16px;
-	color: #A35A00;
 }
 
 h5, .container-overview .subsection-title
@@ -243,19 +260,11 @@ h1, h2, h3 {
     color: #454545;
 }
 
-.modeling {
-  
-}
-
-.directives {
-  
-}
-
 .categories .span2 {
   /*border: 1px solid #7F8C8D;*/
 }
 
-article.category h3 {
+article.category h5 {
   border-bottom: 1px solid #ECF0F1;
   padding: 0 0 5px 5px;
 }
@@ -277,7 +286,7 @@ article.category li a {
 .navbar-inner {
   background-image: none;
   background-color: transparent;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 0 0 0 0;
   box-shadow: none;
   border: none;
 }
@@ -290,4 +299,10 @@ article.category li a {
 
 .navbar .nav > li > a:hover {
   color: #ECF0F1;
+}
+
+@media (max-width: 1190px){
+  article.category h5 {
+    font-size: 90%;
+  }
 }
