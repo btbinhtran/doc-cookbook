@@ -297,7 +297,7 @@ section.category li a {
 }
 
 @media (max-width: 1190px){
-  article.category h5 {
+  section.category h5 {
     font-size: 90%;
   }
 }
