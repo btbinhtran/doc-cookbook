@@ -1,37 +1,35 @@
-html
-{
+html {
     overflow: auto;
-    background-color: #fff;
+    background-color: #2C3E50;
 }
 
-body
-{
+body {
 	font: 14px "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
 	line-height: 130%;
-	color: #000;
-	background-color: #fff;
+	color: #ECF0F1;
 }
 
 a {
-    color: #444;
+  color: #ECF0F1;
+  text-decoration: none;
 }
 
 a:visited {
-    color: #444;
+  color: #BDC3C7;
 }
 
-a:active {
-    color: #444;
+a:hover {
+  text-decoration: underline;
+  background-color: #2980B9;
 }
 
-header
-{
+header {
 	display: block;
 	padding: 6px 4px;
 }
 
 .class-description {
-    font-style: italic;
+  font-style: italic;
 	font-family: Palatino, 'Palatino Linotype', serif;
 	font-size: 130%;
 	line-height: 140%;
@@ -66,50 +64,6 @@ section
 	font-weight: lighter;
 }
 
-nav
-{
-	display: block;
-	float: left;
-    margin-left: -230px;
-    margin-top: 28px;
-    width: 220px;
-    border-left: 1px solid #ccc;
-    padding-left: 9px;
-}
-
-nav ul {
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
-    font-size: 100%;
-    line-height: 17px;
-    padding:0;
-    margin:0;
-    list-style-type:none;
-}
-
-nav h2 a, nav h2 a:visited {
-    color: #A35A00;
-    text-decoration: none;
-}
-
-nav h3 {
-    margin-top: 12px;
-}
-
-nav li {
-    margin-top: 6px;
-}
-
-nav a {
-    color: #5C5954;
-}
-
-nav a:visited {
-    color: #5C5954;
-}
-
-nav a:active {
-    color: #5C5954;
-}
 
 footer {
     display: block;
@@ -283,9 +237,32 @@ h6
 }
 
 .modeling {
-  background-color: red;
+  
 }
 
 .directives {
-  background-color: blue;
+  
+}
+
+.categories .span2 {
+  /*border: 1px solid #7F8C8D;*/
+}
+
+article.category h3 {
+  border-bottom: 1px solid #ECF0F1;
+  padding: 0 0 10px 5px;
+}
+
+article.category ul {
+  list-style: none;
+}
+
+article.category li a {
+  display: inline-block;
+  width: 100%;
+}
+
+.categories {
+  width: 90%;
+  margin: 0 auto;
 }
