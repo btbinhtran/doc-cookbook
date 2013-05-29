@@ -1,0 +1,70 @@
+doctype 5
+html
+  head
+    include _head.jade
+
+  body
+    .row
+      .twelve.columns
+        h1.pagetitle= title
+    .row
+      #nav.three.columns
+        ul.side-nav
+          if locals.structure
+            each file in structure
+              if file.methods
+                if file.link
+                  li
+                    a(href=file.link)=file.source
+                    ul
+                      each method in file.methods
+                        li
+                          a(href=file.link+'#'+method)= method
+                else
+                  each method in file.methods
+                    li
+                      a(href='#'+method)= method
+
+
+      .nine.columns
+        each comment in comments
+          .comment
+            if comment.ctx
+              .label.radius.ctx-type=comment.ctx.type
+              h1(id=comment.ctx.name)= comment.ctx.name
+              h5.subheader= comment.ctx.string
+            .tags
+              ul.no-bullet
+                each tag in comment.tags
+                  unless tag.type == 'api'
+                    li
+                      strong="@"+tag.type + ": "
+                      if tag.types
+                        span.types=' {'+tag.types + '} '
+                      if tag.name
+                        span.name=tag.name+' '
+                      if tag.description
+                        span.description=tag.description
+                      if tag.local
+                        span.local= tag.local
+                      if tag.string
+                        span.string=tag.string
+                      if tag.calls
+                        span.calls=tag.calls
+                      if tag.key
+                        span.key=tag.key
+                      if tag.value
+                        span.value=tag.value
+                      if tag.context
+                        span.context=tag.context
+                      if tag.source
+                        span.source=tag.source
+            .description
+              !=comment.description.full
+
+            if comment.code
+              pre
+                code.language-javascript
+                  =comment.code
+
+
