@@ -7,3 +7,4 @@ components
 /dist
 .shell_history
 .idea
+.temp_tower_modules

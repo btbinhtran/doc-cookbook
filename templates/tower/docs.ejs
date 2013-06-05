@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="well sidebar-nav-fixed">
+        <ul class="nav nav-list">
+          <% for(var i = 0; i < modules.length; i += 1) { %>
+          <% var module = modules[modules[i]], moduleName = modules[i] %>
+          <li>
+            <h4><a href="#<%= moduleName %>-module"><%= modules[i] %></a></h4>
+            <ul class="nav methods">
+            <% for(var j = 0; j < module.length; j += 1) { %>
+              <% var dox = module[j].dox %>
+              <% for(var k = 0; k < dox.length; k += 1) { %>
+                <% var cData = dox[k] %>
+                
+              <% if(cData.ctx && cData.ctx.type === 'function') { %>
+              <li>
+                <a href="#<%= moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
+              </li>
+              <% } %>
+              <% } %>
+            <% } %>
+            </ul>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="span9">
+      <h1>Docs</h1>
+
+      <div id="api">
+        <% for(var i = 0; i < modules.length; i += 1) { %>
+          <% var module = modules[modules[i]], moduleName = modules[i] %>
+          <div id="<%= moduleName %>-module">
+            <h2><%= moduleName %></h2>
+          
+            <% for(var j = 0; j < module.length; j += 1) { %>
+              <% var dox = module[j].dox %>
+              <% for(var k = 0; k < dox.length; k += 1) { %>
+                <% var cData = dox[k] %>
+                
+              <% if(cData.ctx && cData.ctx.type === 'function') { %>
+                <section id="<%= moduleName + '.' + cData.ctx.name %>">
+                  <h3><%= cData.ctx.string %></h3>
+                  <%- cData.description.full %>
+                  <pre class="js"><%= cData.code %></pre>
+                </section>
+              <% } %>
+              <% } %>
+            <% } %>
+            </div>
+          <% } %>
+      </div>
+      </pre>
+    </div>
+  </div>
+</div>

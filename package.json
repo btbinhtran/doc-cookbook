@@ -4,7 +4,12 @@
   "main": "./index.js",
   "dependencies": {
     "commander": "*",
-    "dox-foundation": "*"
+    "underscore": "*",
+    "walkdir": "*",
+    "mkdirp": "*",
+    "ejs": "*",
+    "tower-fs": "*",
+    "dox": "*"
   },
   "cookbook": "doc"
 }
