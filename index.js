@@ -1,3 +1,4 @@
+
 /**
  * Expose `doc`.
  */
@@ -6,8 +7,6 @@ exports = module.exports = doc;
 
 /**
  * Sub-cookbooks.
- *
- * XXX: Maybe they're called `commands`?
  */
 
 exports.objects = [
@@ -20,10 +19,10 @@ exports.objects = [
  */
 
 exports.aliases = {
-    cheatsheets: 'cheatsheet',
-    tutorials: 'tutorial'
-}
+  cheatsheets: 'cheatsheet',
+  tutorials: 'tutorial'
+};
 
 function doc(name) {
-  return require.resolve('./lib/models/' + name);
+  return require.resolve('./lib/resources/' + name);
 }
