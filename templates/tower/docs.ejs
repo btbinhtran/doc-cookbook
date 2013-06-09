@@ -8,30 +8,30 @@
         <li>
           <ul class="module">
             <li><h4><a href="#<%= moduleName %>-module"><%= modules[i] %></a></h4></li>
-            <li>
-              <h5>Properties:</h5>
+            <li>              
               <ul class="nav properties">
+                <li><h5>Properties:</h5></li>
                 <% for(var j = 0; j < module.length; j += 1) { %>
                   <% var dox = module[j].dox %>
                   <% for(var k = 0; k < dox.length; k += 1) { %>
                     <% var cData = dox[k] %>
                     <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
-                    <li>
+                    <li class="p-or-m-item">
                       <a href="#<%= 'property.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
                     </li>
                     <% } %>
                   <% } %>
                 <% } %>
               </ul>
-
-              <h5>Methods:</h5>
+              
               <ul class="nav methods">
+                <li><h5>Methods:</h5></li>
                 <% for(var j = 0; j < module.length; j += 1) { %>
                   <% var dox = module[j].dox %>
                   <% for(var k = 0; k < dox.length; k += 1) { %>
                     <% var cData = dox[k] %>
                     <% if(cData.ctx && (cData.ctx.type === 'function' || cData.ctx.type === 'method')) { %>
-                    <li>
+                    <li class="p-or-m-item">
                       <a href="#<%= 'method.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
                     </li>
                     <% } %>
@@ -51,7 +51,7 @@
       <div id="api">
         <% for(var i = 0; i < modules.length; i += 1) { %>
         <% var module = modules[modules[i]], moduleName = modules[i] %>
-        <div id="<%= moduleName %>-module">
+        <div id="<%= moduleName %>-module" class="module">
           <h2><%= moduleName %></h2>
 
           <div class="module-content">
