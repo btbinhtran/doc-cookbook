@@ -58,16 +58,34 @@
           <h3>Properties:</h3>
           <% for(var j = 0; j < module.length; j += 1) { %>
             <% var dox = module[j].dox %>
+
+            <% var lastProp = '' %>
+
             <% for(var k = 0; k < dox.length; k += 1) { %>
               <% var cData = dox[k] %>
               <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
-              <section class="property" id="<%= 'property.' + moduleName + '.' + cData.ctx.name %>">
+                <% lastProp = cData.ctx.name %>
+
+              <% } %>  
+            <% } %>          
+
+            <% for(var k = 0; k < dox.length; k += 1) { %>
+              <% var cData = dox[k] %>
+              <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
+            
+              <% var truelastProp = '' %>
+
+              <% if(cData.ctx.name === lastProp) { %>
+                <% truelastProp = ' last-section' %>
+              <% } %>
+            
+              <section class="property<%= truelastProp %>" id="<%= 'property.' + moduleName + '.' + cData.ctx.name %>">              
                 <h3><%= moduleName + '.' + cData.ctx.name %></h3>
                 <%- cData.description.full %>   
                 <% var tData = cData.tags %>
                  <p class="params-info">
                 <% for(var l = 0; l < tData.length; l += 1) { %>
-                  @<%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
+                  <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
                 <% } %>
                 </p>            
                 <pre class="js"><%= cData.code %></pre>
@@ -82,15 +100,33 @@
             <% for(var k = 0; k < dox.length; k += 1) { %>
               <% var cData = dox[k] %>
               <% if(cData.ctx && (cData.ctx.type === 'function' || cData.ctx.type === 'method')) { %>
-              <section class="method" id="<%= 'method.' + moduleName + '.' + cData.ctx.name %>">
+              <% var lastSection = '' %>
+              <% if(k === dox.length - 1) { %>
+               <% lastSection = ' last-section' %>
+              <% } %>
+              <section class="method<%= lastSection %>" id="<%= 'method.' + moduleName + '.' + cData.ctx.name %>">
+                <% var tData = cData.tags %>
+                <% var tDataString = '' %>
+                <% for(var l = 0; l < tData.length; l += 1) { %>
+
+                <% if(typeof tData[l].name == 'string') { %>
+                  <% if(tData[l].name.indexOf('[')  > -1) { %>
+                    <% tDataString += (tData[l].name.replace(/[\[\]']+/g,'') + ', ') %>          
+                 <% } else { %>
+                   <% tDataString += (tData[l].name + ', ') %>
+                 <% } %>
+               <% } %>
+                                              
+                <% } %>
+                <% tDataString = tDataString.replace(/,([^,]*)$/, '$1').replace(/\s+\S*$/, "") %>              
                 <h3>
-                  <%= moduleName + '.' + cData.ctx.name %>
+                  <%= moduleName + '.' + cData.ctx.name + '(' + tDataString + ')' %>
                 </h3>
                 <%- cData.description.full %>
-                 <% var tData = cData.tags %>
+                 
                  <p class="params-info">
                 <% for(var l = 0; l < tData.length; l += 1) { %>
-                  @<%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
+                  <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
                 <% } %>
                 </p>
                 <pre class="js"><%= cData.code %></pre>
@@ -103,6 +139,5 @@
         <% } %>
       </div>
     </div>
-
   </div>
 </div>
