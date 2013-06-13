@@ -8,36 +8,46 @@
         <li>
           <ul class="module">
             <li><h4><a href="#<%= moduleName %>-module"><%= modules[i] %></a></h4></li>
-            <li>
-              <ul class="nav properties">
+            <li>  
+              <ul class="module-items">
+
+              <li class="nav properties">
+                <ul>
                 <li><h5>Properties:</h5></li>
                 <% for(var j = 0; j < module.length; j += 1) { %>
                   <% var dox = module[j].dox %>
                   <% for(var k = 0; k < dox.length; k += 1) { %>
                     <% var cData = dox[k] %>
                     <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
-                      <li class="p-or-m-item">
-                        <a href="#<%= 'property.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
-                      </li>
+                    <li class="p-or-m-item">
+                      <a href="#<%= 'property.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
+                    </li>
                     <% } %>
                   <% } %>
                 <% } %>
-              </ul>
-
-              <ul class="nav methods">
+                </ul>
+              </li>
+              
+              <li class="nav methods">
+                <ul>
                 <li><h5>Methods:</h5></li>
                 <% for(var j = 0; j < module.length; j += 1) { %>
                   <% var dox = module[j].dox %>
                   <% for(var k = 0; k < dox.length; k += 1) { %>
                     <% var cData = dox[k] %>
                     <% if(cData.ctx && (cData.ctx.type === 'function' || cData.ctx.type === 'method')) { %>
-                      <li class="p-or-m-item">
-                        <a href="#<%= 'method.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
-                      </li>
+                    <li class="p-or-m-item">
+                      <a href="#<%= 'method.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
+                    </li>
                     <% } %>
                   <% } %>
                 <% } %>
-              </ul>
+                </ul>
+              </li>
+
+            </ul>  
+
+
             </li>
           </ul>
         </li>
@@ -47,94 +57,108 @@
 
     <div class="span8 offset3 right-panel-info">
       <!--<pre><%= JSON.stringify(modules['cli'], undefined, 4) %></pre>-->
-      <h1>Docs</h1>
 
+      <h1>Docs</h1>
       <div id="api">
         <% for(var i = 0; i < modules.length; i += 1) { %>
-          <% var module = modules[modules[i]], moduleName = modules[i] %>
-          <div id="<%= moduleName %>-module" class="module">
-            <h2><%= moduleName %></h2>
+        <% var module = modules[modules[i]], moduleName = modules[i] %>
+        <div id="<%= moduleName %>-module" class="module">
+          <h2><%= moduleName %></h2>
+        
+          <div class="module-content">
+          <% if(module.hasClasses) { %>
+            <h3>Class:</h3>
 
-            <div class="module-content">
-             <h3>Properties:</h3>
-            <% for(var j = 0; j < module.length; j += 1) { %>
-              <% var dox = module[j].dox %>
-              <% var lastProp = '' %>
-              <% for(var k = 0; k < dox.length; k += 1) { %>
-                <% var cData = dox[k] %>
-                <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
-                  <% lastProp = cData.ctx.name %>
-                <% } %>
+            <h4>Properties:</h4>
+            <h4>Methods:</h4>
+
+          <% } %>
+
+          <h3>Properties:</h3>
+          <% for(var j = 0; j < module.length; j += 1) { %>
+            <% var dox = module[j].dox %>
+
+            <% var lastProp = '' %>
+
+            <% for(var k = 0; k < dox.length; k += 1) { %>
+              <% var cData = dox[k] %>
+              <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
+                <% lastProp = cData.ctx.name %>
+              <% } %>  
+            <% } %>          
+
+            <% for(var k = 0; k < dox.length; k += 1) { %>
+              <% var cData = dox[k] %>
+              <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
+            
+              <% var truelastProp = '' %>
+
+              <% if(cData.ctx.name === lastProp) { %>
+                <% truelastProp = ' last-section' %>
               <% } %>
-              <% for(var k = 0; k < dox.length; k += 1) { %>
-                <% var cData = dox[k] %>
-                <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
-                  <% var trueLastProp = '' %>
-                <% if(cData.ctx.name === lastProp) { %>
-                  <% trueLastProp = ' last-section' %>
+            
+              <section class="property<%= truelastProp %>" id="<%= 'property.' + moduleName + '.' + cData.ctx.name %>">              
+                <h3><%= moduleName + '.' + cData.ctx.name %></h3>
+                <%- cData.description.full %>   
+                <% var tData = cData.tags %>
+                 <p class="params-info">
+                <% for(var l = 0; l < tData.length; l += 1) { %>
+                  <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
                 <% } %>
-
-                <section class="property<%= trueLastProp %>" id="<%= 'property.' + moduleName + '.' + cData.ctx.name %>">
-                  <h3><%= moduleName + '.' + cData.ctx.name %></h3>
-                  <%- cData.description.full %>
-                  <% var tData = cData.tags %>
-                  <p class="params-info">
-                  <% for(var l = 0; l < tData.length; l += 1) { %>
-                    <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
-                  <% } %>
-                  </p>
-                  <pre class="js"><%= cData.code %></pre>
-                </section>
+                </p>            
+                <pre class="js"><%= cData.code %></pre>
+              </section>
               <% } %>
             <% } %>
-        <% } %>
+          <% } %>
 
-              <h3>Methods:</h3>
-              <% for(var j = 0; j < module.length; j += 1) { %>
-                <% var dox = module[j].dox %>
-                <% for(var k = 0; k < dox.length; k += 1) { %>
-                  <% var cData = dox[k] %>
-                  <% if(cData.ctx && (cData.ctx.type === 'function' || cData.ctx.type === 'method')) { %>
-                    <% var lastSection = '' %>
-                    <% if(k === dox.length - 1) { %>
-                      <% lastSection = ' last-section' %>
-                    <% } %>
-                    <section class="method<%= lastSection %>" id="<%= 'method.' + moduleName + '.' + cData.ctx.name %>">
-                      <% var tData = cData.tags %>
-                      <% var tDataString = '' %>
-                      <% for(var l = 0; l < tData.length; l += 1) { %>
-                        <% if(typeof tData[l].name == 'string') { %>
-                          <% if(tData[l].name.indexOf('[') > -1) { %>
-                            <% tDataString += (tData[l].name.replace(/[\[\]']+/g,'') + ', ') %>
-                          <% } else { %>
-                            <% tDataString += (tData[l].name + ', ') %>
-                          <% } %>
-                        <% } %>
-                      <% } %>
-                      <% tDataString = tDataString.substr(0,(tDataString.length - 2)) %>
-                      <h3>
-                        <%= moduleName + '.' + cData.ctx.name + '(' + tDataString + ')' %>
-                      </h3>
-                      <h5>Description:</h5>
-                      <%- cData.description.full %>
-                      <p class="params-info">
-                      <h5>Parameters:</h5>
-                      <% for(var l = 0; l < tData.length; l += 1) { %>
-                        <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
-                      <% } %>
-                      </p>
-                      <h5>Code:</h5>
-                      <pre class="js"><%= cData.code %></pre>
-                    </section>
-                  <% } %>
-                <% } %>
+          <h3>Methods:</h3>
+          <% for(var j = 0; j < module.length; j += 1) { %>
+            <% var dox = module[j].dox %>
+            <% for(var k = 0; k < dox.length; k += 1) { %>
+              <% var cData = dox[k] %>
+              <% if(cData.ctx && (cData.ctx.type === 'function' || cData.ctx.type === 'method')) { %>
+              <% var lastSection = '' %>
+              <% if(k === dox.length - 1) { %>
+               <% lastSection = ' last-section' %>
               <% } %>
-            </div>
+              <section class="method<%= lastSection %>" id="<%= 'method.' + moduleName + '.' + cData.ctx.name %>">
+                <% var tData = cData.tags %>
+                <% var tDataString = '' %>
+                <% for(var l = 0; l < tData.length; l += 1) { %>
+
+                <% if(typeof tData[l].name == 'string') { %>
+                  <% if(tData[l].name.indexOf('[')  > -1) { %>
+                    <% tDataString += (tData[l].name.replace(/[\[\]']+/g,'') + ', ') %>          
+                 <% } else { %>
+                   <% tDataString += (tData[l].name + ', ') %>
+                 <% } %>
+               <% } %>
+                                              
+                <% } %>
+                <% tDataString = tDataString.substr(0,(tDataString.length - 2)) %>              
+                <h3>
+                  <%= moduleName + '.' + cData.ctx.name + '(' + tDataString + ')' %>
+                </h3>
+                <h5>Description:</h5>
+                <%- cData.description.full %>
+                 
+                 <p class="params-info">
+                 <h5>Parameters:</h5>
+                <% for(var l = 0; l < tData.length; l += 1) { %>
+                  <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
+                <% } %>
+                </p>
+                <h5>Code:</h5>
+                <pre class="js"><%= cData.code %></pre>
+              </section>
+              <% } %>
+            <% } %>
+          <% } %>
           </div>
+        </div>
         <% } %>
       </div>
-
     </div>
-
   </div>
 </div>
