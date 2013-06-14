@@ -2,15 +2,14 @@
   <div class="row-fluid span12">
 
     <div class="well sidebar-nav-fixed span2">
-      <ul class="nav nav-list">
+      <ul class="nav nav-list" id="nav-list">
         <% for(var i = 0; i < modules.length; i += 1) { %>
         <% var module = modules[modules[i]], moduleName = modules[i] %>
         <li>
           <ul class="module">
-            <li><h4><a href="#<%= moduleName %>-module"><%= modules[i] %></a></h4></li>
+            <li><h4><a class="mod-link" href="#<%= moduleName %>-module"><%= modules[i] %></a></h4></li>
             <li>  
               <ul class="module-items">
-
               <li class="nav properties">
                 <ul>
                 <li><h5>Properties:</h5></li>
