@@ -10,39 +10,74 @@
             <li><h4><a class="mod-link" href="#<%= moduleName %>-module"><%= modules[i] %></a></h4></li>
             <li>  
               <ul class="module-items">
-              <li class="nav properties">
-                <ul>
-                <li><h5>Properties:</h5></li>
-                <% for(var j = 0; j < module.length; j += 1) { %>
-                  <% var dox = module[j].dox %>
-                  <% for(var k = 0; k < dox.length; k += 1) { %>
-                    <% var cData = dox[k] %>
-                    <% if(cData.ctx && (cData.ctx.type === 'property')) { %>
-                    <li class="p-or-m-item">
+              <% if(module.classes.length > 0) { %>
+                <li class="nav classes">
+                  <ul>
+                    <li><h5>Classes:</h5></li>
+                  <% for(var j = 0, len = module.classes.length; j < len; j += 1) { %>
+                    <% var cData = module.classes[j] %>
+                    <li>
+                      <a href="#<%= 'class.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
+                    </li>  
+                    <% if(cData.properties.length > 0) { %>
+                      <ul>
+                       <li><h6 class="class-indent"><%= cData.ctx.name %> Properties:</h6></li>
+                         <% for(var k = 0, len2 = cData.methods.length; k < len2; k += 1) { %>
+                          <% var cData2 = cData.properties[k] %>
+                          <li class="class-indent">
+                            <a href="#<%= 'class.property.'  + cData2.ctx.name %>"><%= cData2.ctx.name %></a>
+                          </li> 
+                         <% } %>
+                       </ul> 
+                    <% } %>
+
+                    <% if(cData.methods.length > 0) { %>
+                     <ul>
+                     <li><h6 class="class-indent"><%= cData.ctx.name %> Methods:</h6></li>
+                       <% for(var k = 0, len2 = cData.methods.length; k < len2; k += 1) { %>
+                        <% var cData2 = cData.methods[k] %>
+                        <li class="class-indent">
+                          <a href="#<%= 'class.method.'  + cData2.ctx.name %>"><%= cData2.ctx.name %></a>
+                        </li> 
+                       <% } %>
+                     </ul>
+                    <% } %>
+
+                  <% } %>
+
+                  </ul>
+                </li>
+              <% } %>
+
+              <% if(module.properties.length > 0) { %>
+                <li class="nav properties">
+                  <ul>
+                    <li><h5>Properties:</h5></li>
+                  <% for(var j = 0, len = module.properties.length; j < len; j += 1) { %>
+                    <% var cData = module.properties[j] %>
+                
+                    <li>
                       <a href="#<%= 'property.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
                     </li>
-                    <% } %>
                   <% } %>
-                <% } %>
-                </ul>
-              </li>
+                  </ul>             
+                </li>
+              <% } %>
               
-              <li class="nav methods">
-                <ul>
-                <li><h5>Methods:</h5></li>
-                <% for(var j = 0; j < module.length; j += 1) { %>
-                  <% var dox = module[j].dox %>
-                  <% for(var k = 0; k < dox.length; k += 1) { %>
-                    <% var cData = dox[k] %>
-                    <% if(cData.ctx && (cData.ctx.type === 'function' || cData.ctx.type === 'method')) { %>
-                    <li class="p-or-m-item">
+              <% if(module.methods.length > 0) { %>
+                <li class="nav methods">
+                  <ul>
+                  <li><h5>Methods:</h5></li>
+                  <% for(var j = 0, len = module.methods.length; j < len; j += 1) { %>
+                    <% var cData = module.methods[j] %>
+                   
+                    <li>
                       <a href="#<%= 'method.' + moduleName + '.' + cData.ctx.name %>"><%= cData.ctx.name %></a>
                     </li>
-                    <% } %>
                   <% } %>
-                <% } %>
-                </ul>
-              </li>
+                  </ul>
+                </li>
+              <% } %>
 
             </ul>  
 
@@ -55,7 +90,7 @@
     </div>
 
     <div class="span8 offset3 right-panel-info">
-      <!--<pre><%= JSON.stringify(modules['cli'], undefined, 4) %></pre>-->
+      <!--<pre><%= JSON.stringify(modules['adapter'].classes, undefined, 4) %></pre>-->
 
       <h1>Docs</h1>
       <div id="api">
