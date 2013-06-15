@@ -100,13 +100,32 @@
           <h2><%= moduleName %></h2>
         
           <div class="module-content">
-          <% if(module.hasClasses) { %>
-            <h3>Class:</h3>
+        
+          <% if(module.classes.length) { %>            
+            <h3>Classes:</h3>
+            <section class="class">
+              <% for(var j = 0, len = module.classes.length; j < len; j += 1) { %>
+                  <% var cData = module.classes[j] %>
+                  <h4><%= cData.ctx.name %></h4>
 
-            <h4>Properties:</h4>
-            <h4>Methods:</h4>
+                  <% if(typeof cData.description !== 'undefined') { %>
+                    <%- cData.description.full %>
+                  <% } %>
+                  
+                  <h5 class="class-method-h"><%= cData.ctx.name %> Methods:</h5>
+                  <% for(var k = 0, len2 = cData.methods.length; k < len2; k += 1) { %>
+                    <% var mData = cData.methods[k] %>
+                    <div class="class-method" id="class.method.<%= mData.ctx.name %>">
+                      <h6><%= mData.ctx.name %></h6>
+                      <%- mData.description.full %>
+                      <pre><%= mData.code %></pre>
+                    </div>  
 
+                  <% } %>                  
+              <% } %>  
+            </section>                              
           <% } %>
+   
 
           <h3>Properties:</h3>
           <% for(var j = 0; j < module.length; j += 1) { %>
@@ -132,14 +151,14 @@
               <% } %>
             
               <section class="property<%= truelastProp %>" id="<%= 'property.' + moduleName + '.' + cData.ctx.name %>">              
-                <h3><%= moduleName + '.' + cData.ctx.name %></h3>
+                <h4><%= moduleName + '.' + cData.ctx.name %></h4>
                 <%- cData.description.full %>   
                 <% var tData = cData.tags %>
                  <p class="params-info">
                 <% for(var l = 0; l < tData.length; l += 1) { %>
-                  <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
+                  <%= tData[l].type %> <%= tData[l].types %> <%= tData[l].description %><br/>
                 <% } %>
-                </p>            
+                </p>                            
                 <pre class="js"><%= cData.code %></pre>
               </section>
               <% } %>
@@ -171,18 +190,21 @@
                                               
                 <% } %>
                 <% tDataString = tDataString.substr(0,(tDataString.length - 2)) %>              
-                <h3>
+                <h4>
                   <%= moduleName + '.' + cData.ctx.name + '(' + tDataString + ')' %>
-                </h3>
+                </h4>
                 <h5>Description:</h5>
                 <%- cData.description.full %>
                  
                  <p class="params-info">
                  <h5>Parameters:</h5>
                 <% for(var l = 0; l < tData.length; l += 1) { %>
-                  <%= tData[l].type %> {<%= tData[l].types %>} <%= tData[l].description %><br/>
+                  <%= tData[l].type %> <%= tData[l].types %> <%= tData[l].description %><br/>
                 <% } %>
                 </p>
+
+
+
                 <h5>Code:</h5>
                 <pre class="js"><%= cData.code %></pre>
               </section>
