@@ -117,7 +117,20 @@
                     <% var mData = cData.methods[k] %>
                     <div class="class-method" id="class.method.<%= mData.ctx.name %>">
                       <h6><%= mData.ctx.name %></h6>
+
+                      <h6>Description:</h6>
                       <%- mData.description.full %>
+
+                      <% var mTags = mData.tags %>
+      
+                      <h6>Parameters:</h6>
+                      <p>
+                      <% for(var m = 0, len3 = mData.tags.length; m < len3; m += 1) { %>
+                        <%= mTags[m].type + ' ' + mTags[m].types + ' ' + mTags[m].description %><br/>                                             
+                      <% } %>
+                      </p>
+
+                      <h6>Code:</h6>
                       <pre><%= mData.code %></pre>
                     </div>  
 
