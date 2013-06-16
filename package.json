@@ -7,7 +7,7 @@
     "underscore": "*",
     "walkdir": "*",
     "mkdirp": "*",
-    "ejs": "*",
+    "jade": "*",
     "tower-fs": "*",
     "dox": "*"
   },

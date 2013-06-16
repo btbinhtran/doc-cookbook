@@ -1,0 +1,171 @@
+div(class="container-fluid")
+  div(class="row-fluid span12")
+
+    div(class="well sidebar-nav-fixed span2")
+      ul(class="nav nav-list", id="nav-list")
+        for moduleName in modules
+          - var module = modules[moduleName]
+          li
+            ul(class="module")
+              li
+                h4
+                  a(class="mod-link", href="##{moduleName}-module")= moduleName
+              li
+                ul(class="module-items")
+                  if module.classes.length > 0
+                    li(class="nav classes")
+                      ul
+                        li
+                          h5 Classes:
+                        for klass in module.classes
+                          li
+                            a(href="#class-#{moduleName}-#{klass.ctx.name}")= klass.ctx.name
+                            if klass.properties.length > 0
+                              ul
+                                li
+                                  h6(class="class-indent") #{klass.ctx.name} Properties:
+                                  for property in klass.properties
+                                    li(class="class-indent")
+                                      a(href="#class-property-#{moduleName}-#{klass.ctx.name}-#{property.ctx.name}")= property.ctx.name
+
+                            if klass.methods.length > 0
+                              ul
+                                li
+                                  h6(class="class-indent") #{klass.ctx.name} Methods:
+                                  for method in klass.methods
+                                    li(class="class-indent")
+                                      a(href="#class-method-#{moduleName}-#{klass.ctx.name}-#{method.ctx.name}")= method.ctx.name
+
+                  if module.properties.length > 0
+                    li(class="nav properties")
+                      ul
+                        li
+                          h5 Properties:
+                        for property in module.properties
+                          li
+                            a(href="#property-#{moduleName}-#{property.ctx.name}")= property.ctx.name
+
+                  if module.methods.length > 0
+                    li(class="nav methods")
+                      ul
+                        li
+                          h5 Methods:
+                        for method in module.methods
+                          li
+                            a(href="#method-#{moduleName}-#{method.ctx.name}")= method.ctx.name
+
+    div(class="span8 offset3 right-panel-info")
+      h1 Docs
+      div(id="api")
+        for moduleName in modules
+          - var module = modules[moduleName]
+          div(id="#{moduleName}-module", class="module")
+            h2= moduleName
+
+            div(class="module-content")
+              if module.classes.length > 0
+                div(id="#{moduleName}-module-classes")
+                  for klass in module.classes
+                    section(id="class-#{moduleName}-#{klass.ctx.name}")
+                      h3 #{klass.ctx.name} Class:
+                      div(class="description")!= klass.description.full
+                      div(class="class-constructor")
+                        h4 Constructor: #{klass.ctx.name}#{klass.paramsString}
+                        if klass.hasParams
+                        div(class="params")
+                          h4 Parameters:
+                          ul(class="params-list")
+                            for param in klass.params
+                              li
+                                span(class="param-name")= param.name
+                                = " "
+                                span(class="type")= param.types.join(' | ')
+
+                                div(class="param-description")= param.description
+
+                      if klass.properties.length > 0
+                        h2 Properties:
+                        div(id="#{moduleName}-module-properties")
+                          for property in klass.properties
+                            section(id="property-#{moduleName}-#{property.ctx.name}")
+                              h3 #{moduleName}.#{property.ctx.name}
+                              div(class="description")!= property.description.full
+
+                      if klass.methods.length > 0
+                        h4 Methods:
+                        div(id="class-#{moduleName}-#{klass.ctx.name}")
+                          for method in klass.methods
+                            section(id="class-method-#{moduleName}-#{klass.ctx.name}-#{method.ctx.name}", class="method")
+                              h3 #{method.ctx.name}#{method.paramsString}
+                                if method.hasReturnData
+                                  = " "
+                                  span(class="type")= method.returnData.types.join(' | ')
+
+                                if method.chainable
+                                  span(class="chainable") chainable
+                              div(class="description")!= method.description.full
+
+                              if method.hasParams
+                                div(class="params")
+                                  h4 Parameters:
+                                  ul(class="params-list")
+                                    for param in method.params
+                                      li
+                                        span(class="param-name")= param.name
+                                        = " "
+                                        span(class="type")= param.types.join(' | ')
+
+                                        div(class="param-description")= param.description
+
+                              if method.hasReturnData
+                                div(class="returns")
+                                  h4 Returns:
+                                  div(class="returns-description")
+                                    span(class="type")= method.returnData.types.join(' | ')
+                                    if method.returnData.description
+                                      = ': '
+                                      span(class="description")= method.returnData.description
+
+              if module.properties.length > 0
+                h2 Properties:
+                div(id="#{moduleName}-module-properties")
+                  for property in module.properties
+                    section(id="property-#{moduleName}-#{property.ctx.name}")
+                      h3 #{moduleName}.#{property.ctx.name}
+                      div(class="description")!= property.description.full
+
+              if module.methods.length > 0
+                h2 Methods:
+                div(id="#{moduleName}-module-methods")
+                  for method in module.methods
+                    section(id="method-#{moduleName}-#{method.ctx.name}", class="method")
+                      h3 #{moduleName}.#{method.ctx.name}#{method.paramsString}
+                        if method.hasReturnData
+                          = " "
+                          span(class="type")= method.returnData.types.join(' | ')
+
+                        if method.chainable
+                          span(class="chainable") chainable
+                      div(class="description")!= method.description.full
+
+                      if method.hasParams
+                        div(class="params")
+                          h4 Parameters:
+                          ul(class="params-list")
+                            for param in method.params
+                              li
+                                span(class="param-name")= param.name
+                                = " "
+                                span(class="type")= param.types.join(' | ')
+
+                                div(class="param-description")= param.description
+
+                      if method.hasReturnData
+                        div(class="returns")
+                          h4 Returns:
+                          div(class="returns-description")
+                            span(class="type")= method.returnData.types.join(' | ')
+                            if method.returnData.description
+                              = ': '
+                              span(class="description")= method.returnData.description
+
